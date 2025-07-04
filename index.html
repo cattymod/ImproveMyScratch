@@ -115,15 +115,46 @@
   </div>
 
   <script>
-    // Redirect login and get started buttons to /ImproveMyScratch/login/
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      window.location.href = '/ImproveMyScratch/login/';
-    });
-    document.getElementById('getStartedBtn').addEventListener('click', () => {
-      window.location.href = '/ImproveMyScratch/login/';
-    });
+    // Helper: get cookie value by name
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
 
-    // Redirect GitHub icon to your repo
+    // Detect if logged in by presence of "Username" cookie
+    const username = getCookie("Username");
+
+    const loginBtn = document.getElementById('loginBtn');
+    const getStartedBtn = document.getElementById('getStartedBtn');
+
+    if (username) {
+      // User logged in - change buttons to dashboard style
+      loginBtn.innerHTML = `<i class="fas fa-home"></i><span>Dashboard</span>`;
+      getStartedBtn.innerHTML = `<i class="fas fa-home"></i><span>Go to Dashboard</span>`;
+
+      // Redirect both buttons to dashboard page
+      loginBtn.addEventListener('click', () => {
+        window.location.href = '/ImproveMyScratch/dev/';
+      });
+      getStartedBtn.addEventListener('click', () => {
+        window.location.href = '/ImproveMyScratch/dev/';
+      });
+    } else {
+      // Not logged in - keep original login buttons redirecting to login
+      loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i><span>Login</span>`;
+      getStartedBtn.innerHTML = `<i class="fas fa-play"></i><span>Get Started</span>`;
+
+      loginBtn.addEventListener('click', () => {
+        window.location.href = '/ImproveMyScratch/login/';
+      });
+      getStartedBtn.addEventListener('click', () => {
+        window.location.href = '/ImproveMyScratch/login/';
+      });
+    }
+
+    // GitHub icon redirect
     document.getElementById('githubIcon').addEventListener('click', () => {
       window.open('https://github.com/noahscratch493/ImproveMyScratch/', '_blank');
     });
