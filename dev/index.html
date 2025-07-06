@@ -7,30 +7,9 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Read cookie
-    function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    }
 
-    // Handle logout
-    function logout() {
-      document.cookie = "Username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      window.location.href = "/ImproveMyScratch/login/";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const user = getCookie("Username");
-      if (!user) {
-        window.location.href = "/ImproveMyScratch/login/";
-        return;
-      }
-      document.getElementById("usernameDisplay").innerText = `@${user}`;
-    });
   </script>
   <style>
-    /* Popup fade in/out */
     #popup {
       opacity: 0;
       pointer-events: none;
@@ -59,7 +38,7 @@
     <!-- Explore Projects -->
     <section>
       <h2 class="text-xl font-semibold mb-3 text-blue-300">Explore Projects</h2>
-      <a href="https://scratch.mit.edu/explore/projects/all" target="_blank" class="inline-block bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded">
+      <a href="https://scratch.mit.edu/explore/projects/all" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded">
         See Trending Projects on Scratch →
       </a>
     </section>
@@ -72,6 +51,7 @@
           class="w-full h-[400px] rounded"
           src="https://turbowarp.org/1108790117/embed?autoplay=true"
           allowfullscreen
+          title="Idea Generator"
         ></iframe>
       </div>
       <button
@@ -88,33 +68,39 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Griffpatch Platformer -->
-        <a href="https://www.youtube.com/playlist?list=PLy4zsTUHwGJIATydhFeZa5pspLZR7yE__" target="_blank" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
-          <img src="https://i.ytimg.com/vi/D16hTnDGweo/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBplCFO01Pq0l5iIMIvn5urk77T4w" class="w-full h-40 object-cover rounded mb-2" />
+        <a href="https://www.youtube.com/playlist?list=PLy4zsTUHwGJIATydhFeZa5pspLZR7yE__" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
+          <img src="https://i.ytimg.com/vi/D16hTnDGweo/hqdefault.jpg" class="w-full h-40 object-cover rounded mb-2" alt="Platformer tutorial thumbnail" />
           <h3 class="text-lg font-semibold text-white">How to make a Platformer game</h3>
           <p class="text-sm text-gray-400">YouTube Playlist</p>
         </a>
 
         <!-- Scratch Team -->
-        <a href="https://www.youtube.com/scratchteam" target="_blank" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
-          <img src="https://avatars.githubusercontent.com/u/5264597?v=4" class="w-full h-40 object-cover rounded mb-2" />
+        <a href="https://www.youtube.com/scratchteam" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
+          <img src="https://avatars.githubusercontent.com/u/5264597?v=4" class="w-full h-40 object-cover rounded mb-2" alt="Scratch Team logo" />
           <h3 class="text-lg font-semibold text-white">Scratch Team Tutorials</h3>
           <p class="text-sm text-gray-400">Official Scratch YouTube Channel</p>
         </a>
 
         <!-- Geometry Dash Clone -->
-        <a href="https://www.youtube.com/playlist?list=PLy4zsTUHwGJJnoXPSYlKQ15wedqB39W_E" target="_blank" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
-          <img src="https://i.ytimg.com/vi/FYZ1bfB1nho/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC-ynkJ6XSumLooxXQKVMKAS_tN9g" class="w-full h-40 object-cover rounded mb-2" />
+        <a href="https://www.youtube.com/playlist?list=PLy4zsTUHwGJJnoXPSYlKQ15wedqB39W_E" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
+          <img src="https://i.ytimg.com/vi/FYZ1bfB1nho/hqdefault.jpg" class="w-full h-40 object-cover rounded mb-2" alt="Geometry Dash Clone tutorial" />
           <h3 class="text-lg font-semibold text-white">Make a Geometry Dash Clone in Scratch</h3>
           <p class="text-sm text-gray-400">YouTube Playlist</p>
         </a>
 
         <!-- Tile Scrolling Platformer -->
-        <a href="https://www.youtube.com/playlist?list=PLy4zsTUHwGJIc90UaTKd-wpIH12FCSoLh" target="_blank" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
-          <img src="https://i.ytimg.com/vi/Fl-LX94Z4Cc/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCmbiFnLYGGHbo3iOw-rXKJG2yoBg" class="w-full h-40 object-cover rounded mb-2" />
+        <a href="https://www.youtube.com/playlist?list=PLy4zsTUHwGJIc90UaTKd-wpIH12FCSoLh" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
+          <img src="https://i.ytimg.com/vi/Fl-LX94Z4Cc/hqdefault.jpg" class="w-full h-40 object-cover rounded mb-2" alt="Tile Scrolling Platformer tutorial" />
           <h3 class="text-lg font-semibold text-white">Tile Scrolling Platformer Tutorial</h3>
           <p class="text-sm text-gray-400">YouTube Playlist</p>
         </a>
 
+        <!-- Noahscratch493 Channel -->
+        <a href="https://youtube.com/@noahscratch493" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:shadow-xl transition">
+          <img src="https://avatars.githubusercontent.com/u/161503774?v=4" class="w-full h-40 object-cover rounded mb-2" alt="Noahscratch493 channel avatar" />
+          <h3 class="text-lg font-semibold text-white">Noahscratch493 Tutorials</h3>
+          <p class="text-sm text-gray-400">YouTube Channel</p>
+        </a>
       </div>
     </section>
 
@@ -157,7 +143,6 @@
     aria-hidden="true"
   >
     <div class="relative bg-gray-900 rounded-lg shadow-lg w-96 h-96 max-w-full max-h-full">
-
       <iframe
         src="https://noahscratch493.github.io/ImproveMyScratch/assets/embed/useful-blocks.html"
         title="Useful Scripts"
@@ -182,7 +167,6 @@
       popup.setAttribute('aria-hidden', 'false');
     });
 
-    // Optional: close popup when clicking outside the content
     popup.addEventListener('click', (e) => {
       if (e.target === popup) {
         popup.classList.remove('active');
