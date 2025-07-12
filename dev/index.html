@@ -7,7 +7,27 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // Read cookie
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
+    // Handle logout
+    function logout() {
+      document.cookie = "Username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.href = "/ImproveMyScratch/login/";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = getCookie("Username");
+      if (!user) {
+        window.location.href = "/ImproveMyScratch/login/";
+        return;
+      }
+      document.getElementById("usernameDisplay").innerText = `@${user}`;
+    });
   </script>
   <style>
     #popup {
